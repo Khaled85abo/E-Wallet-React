@@ -12,14 +12,14 @@ export const StyledCard = styled.article`
   justify-content: space-between;
   ${(props) => {
     switch (props.$vendor) {
+      case "Swedbank":
+        return css`
+          background: #c59801;
+        `;
       case "Nordea":
         return css`
           background: #0a126e;
           color: #ece6e6;
-        `;
-      case "Swedbank":
-        return css`
-          background: #c59801;
         `;
       case "Danskbank":
         return css`
@@ -28,6 +28,7 @@ export const StyledCard = styled.article`
       case "Handelsbanken":
         return css`
           background: #6a6a69;
+          color: lightGray;
         `;
       default:
         return css`
@@ -57,9 +58,10 @@ export const Span = styled.span`
 
 export const Form = styled.form`
 max-width: 350px;
-margin: 2rem auto 0 auto;
+margin: 2rem auto 1rem auto;
 text-align: left:
 text-transform: uppercase;
+font-size: 1.3rem;
 `;
 
 export const Label = styled.label`
@@ -73,7 +75,7 @@ export const Input = styled.input`
   border-radius: 8px;
   height: 56px;
   margin: 0.1rem 0 1rem 0;
-  font-size: 1.3rem;
+
   border: 1px black solid;
 `;
 export const Select = styled.select`
@@ -91,4 +93,8 @@ export const Submit = styled(Input)`
   height: 72px;
   color: white;
   margin-top: 3rem;
+`;
+
+export const MaxWidth45 = styled.div`
+  max-width: 45%;
 `;
