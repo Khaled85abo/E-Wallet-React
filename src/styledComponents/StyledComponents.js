@@ -6,7 +6,7 @@ export const StyledCard = styled.article`
   height: 241px;
   margin: 1rem auto;
   border-radius: 8px;
-  box-shadow: 0px 0px 8px 5px black;
+  box-shadow: 0px 0px 8px black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
