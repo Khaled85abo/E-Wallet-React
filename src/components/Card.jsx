@@ -1,64 +1,60 @@
 import { useMemo, useCallback } from "react";
-
-import {
-  StyledCard,
-  FlexCol,
-  Flex,
-  ChipLogo,
-  Span,
-} from "../styledComponents/StyledComponents";
+import { Flex, FlexCol } from "../globalStyles";
+import { StyledCard, Span, ChipLogo } from "./Card.elements";
 import { Chip, Wifi, Bitcoin, BlockChain, Ninja, Evil } from "../assets";
+import Loogo from "../assets/Logo";
 
-const Card = ({ cvc, owner, cardNumber, valid, vendor }) => {
+const Card = (props) => {
+  const { owner, number, valid, vendor } = props.card;
   const span1 = useMemo(() => {
     let span = "";
     for (let i = 0; i < 4; i++) {
-      if (cardNumber && cardNumber[i]) {
-        span += cardNumber[i];
+      if (number && number[i]) {
+        span += number[i];
       } else {
         span += "X";
       }
     }
 
     return span;
-  }, [cardNumber]);
+  }, [number]);
 
   const span2 = useMemo(() => {
     let span = "";
     for (let i = 4; i < 8; i++) {
-      if (cardNumber && cardNumber[i]) {
-        span += cardNumber[i];
+      if (number && number[i]) {
+        span += number[i];
       } else {
         span += "X";
       }
     }
 
     return span;
-  }, [cardNumber]);
+  }, [number]);
   const span3 = useMemo(() => {
     let span = "";
     for (let i = 8; i < 12; i++) {
-      if (cardNumber && cardNumber[i]) {
-        span += cardNumber[i];
+      if (number && number[i]) {
+        span += number[i];
       } else {
         span += "X";
       }
     }
 
     return span;
-  }, [cardNumber]);
+  }, [number]);
   const span4 = useMemo(() => {
     let span = "";
     for (let i = 12; i < 16; i++) {
-      if (cardNumber && cardNumber[i]) {
-        span += cardNumber[i];
+      if (number && number[i]) {
+        span += number[i];
       } else {
         span += "X";
       }
     }
 
     return span;
-  }, [cardNumber]);
+  }, [number]);
   const month = useMemo(() => {
     let mo = "";
 
@@ -86,18 +82,18 @@ const Card = ({ cvc, owner, cardNumber, valid, vendor }) => {
     return ye;
   }, [valid]);
 
-  const Logo = useCallback(() => {
-    switch (vendor) {
-      case "Swedbank":
-        return <Ninja />;
-      case "Nordea":
-        return <BlockChain />;
-      case "Handelsbanken":
-        return <Bitcoin />;
-      default:
-        return <Evil />;
-    }
-  }, [vendor]);
+  // const Logo = useCallback(() => {
+  //   switch (vendor) {
+  //     case "Swedbank":
+  //       return <Ninja />;
+  //     case "Nordea":
+  //       return <BlockChain />;
+  //     case "Handelsbanken":
+  //       return <Bitcoin />;
+  //     default:
+  //       return <Evil />;
+  //   }
+  // }, [vendor]);
 
   const chipColor =
     vendor === "Nordea" || vendor === "Handelsbanken" ? "white" : "black";
@@ -108,7 +104,7 @@ const Card = ({ cvc, owner, cardNumber, valid, vendor }) => {
           <Wifi color={chipColor} />
           <Chip color={chipColor} />
         </FlexCol>
-        <Logo />
+        <Loogo vendor={vendor} />
       </ChipLogo>
       <Flex>
         <Span>{span1}</Span>
@@ -118,11 +114,11 @@ const Card = ({ cvc, owner, cardNumber, valid, vendor }) => {
       </Flex>
       <Flex>
         <FlexCol>
-          <h4>name</h4>
-          <h4>{owner ? owner : "Card Owner"}</h4>
+          <p>Card Holder</p>
+          <h4>{owner ? owner : "Card Holder"}</h4>
         </FlexCol>
         <FlexCol>
-          <h4>ValidThru</h4>
+          <p>ValidThru</p>
           <h4>
             {month}/{year}
           </h4>

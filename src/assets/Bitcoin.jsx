@@ -3,6 +3,7 @@ import React from "react";
 const Bitcoin = () => {
   return (
     <svg
+      className="Bitcoin"
       width="64"
       height="64"
       viewBox="0 0 64 64"

@@ -3,6 +3,7 @@ import React from "react";
 const Ninja = () => {
   return (
     <svg
+      className="ninja"
       width="64"
       height="64"
       viewBox="0 0 64 64"

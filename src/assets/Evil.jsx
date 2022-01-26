@@ -3,6 +3,7 @@ import React from "react";
 const Evil = () => {
   return (
     <svg
+      className="evil"
       width="64"
       height="64"
       viewBox="0 0 64 64"

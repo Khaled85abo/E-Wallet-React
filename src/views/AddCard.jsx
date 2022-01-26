@@ -1,57 +1,85 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import {
   Form,
   Input,
   Submit,
   Label,
   Select,
-  Flex,
   MaxWidth45,
-} from "../styledComponents/StyledComponents";
+} from "./AddCard.elements";
+import { Flex } from "../globalStyles";
 import Card from "../components/Card";
 
-const AddCard = ({ setCards }) => {
-  const [cardNumber, setCardNumber] = useState(null);
-  const [owner, setOwner] = useState(null);
-  const [valid, setValid] = useState(null);
-  const [cvc, setCvc] = useState(null);
-  const [vendor, setVendor] = useState(null);
+const cardReducer = (state, action) => {
+  switch (action.type) {
+    case "number":
+      return {
+        ...state,
+        number: action.payload,
+      };
+    case "owner":
+      return {
+        ...state,
+        owner: action.payload,
+      };
+    case "vendor":
+      return {
+        ...state,
+        vendor: action.payload,
+      };
+    case "cvc":
+      return {
+        ...state,
+        cvc: action.payload,
+      };
+    case "valid":
+      return {
+        ...state,
+        valid: action.payload,
+      };
+  }
+};
+
+const initialCard = {
+  number: "",
+  owner: "",
+  cvc: "",
+  valid: "",
+  vendor: "",
+};
+
+const AddCard = ({ handleCardAdded }) => {
+  const [state, dispatch] = useReducer(cardReducer, initialCard);
+  const { number, owner, valid, vendor, cvc } = state;
+  const [card, setCard] = useState({
+    number: "",
+    valid: "",
+    owner: "",
+    vendor: "",
+    cvc: "",
+  });
+
   const handleSubmitCard = (e) => {
     e.preventDefault();
-    const card = {
-      number: cardNumber,
-      owner: owner,
-      valid: valid,
-      cvc: cvc,
-      vendor: vendor,
-    };
-    console.log(card);
-    setCards((oldArr) => [...oldArr, card]);
+    handleCardAdded(card);
   };
   return (
     <div className="App">
-      <Card
-        cardNumber={cardNumber}
-        owner={owner}
-        valid={valid}
-        cvc={cvc}
-        vendor={vendor}
-      />
+      <Card card={card} />
       <Form onSubmit={handleSubmitCard}>
         <Label>Card Number</Label>
         <Input
           placeholder="Enter card number"
           id="card-number"
           type="number"
-          min={16}
-          onChange={(e) => setCardNumber(e.target.value)}
+          onChange={(e) => setCard({ ...card, number: e.target.value })}
         />
-        <Label>Card Owner</Label>
+        <Label>Card Holder</Label>
         <Input
           type="text"
           id="owner"
           placeholder="Full name"
-          onChange={(e) => setOwner(e.target.value)}
+          onChange={(e) => setCard({ ...card, owner: e.target.value })}
         />
         <Flex>
           <MaxWidth45>
@@ -60,7 +88,7 @@ const AddCard = ({ setCards }) => {
             <Input
               type="number"
               placeholder="Validity"
-              onChange={(e) => setValid(e.target.value)}
+              onChange={(e) => setCard({ ...card, valid: e.target.value })}
             />
           </MaxWidth45>{" "}
           <MaxWidth45>
@@ -68,13 +96,13 @@ const AddCard = ({ setCards }) => {
             <Input
               type="number"
               placeholder="CvC number"
-              onChange={(e) => setCvc(e.target.value)}
+              onChange={(e) => setCard({ ...card, cvc: e.target.value })}
             />
           </MaxWidth45>
         </Flex>
-        <Select onChange={(e) => setVendor(e.target.value)}>
-          <option value="default">Choose Vendor</option>
+        <Select onChange={(e) => setCard({ ...card, vendor: e.target.value })}>
           <option value="Nordea">Nordea</option>
+          <option value="default">Choose Vendor</option>
           <option value="Swedbank">Swedbank</option>
           <option value="Handelsbanken">Handelsbanken</option>
         </Select>
