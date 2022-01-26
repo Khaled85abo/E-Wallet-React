@@ -49,15 +49,15 @@ const initialCard = {
 };
 
 const AddCard = ({ handleCardAdded }) => {
-  const [state, dispatch] = useReducer(cardReducer, initialCard);
-  const { number, owner, valid, vendor, cvc } = state;
-  const [card, setCard] = useState({
-    number: "",
-    valid: "",
-    owner: "",
-    vendor: "",
-    cvc: "",
-  });
+  const [card, dispatch] = useReducer(cardReducer, initialCard);
+  const { number, owner, valid, vendor, cvc } = card;
+  //   const [card, setCard] = useState({
+  //     number: "",
+  //     valid: "",
+  //     owner: "",
+  //     vendor: "",
+  //     cvc: "",
+  //   });
 
   const handleSubmitCard = (e) => {
     e.preventDefault();
@@ -72,14 +72,16 @@ const AddCard = ({ handleCardAdded }) => {
           placeholder="Enter card number"
           id="card-number"
           type="number"
-          onChange={(e) => setCard({ ...card, number: e.target.value })}
+          onChange={(e) =>
+            dispatch({ type: "number", payload: e.target.value })
+          }
         />
         <Label>Card Holder</Label>
         <Input
           type="text"
           id="owner"
           placeholder="Full name"
-          onChange={(e) => setCard({ ...card, owner: e.target.value })}
+          onChange={(e) => dispatch({ type: "owner", payload: e.target.value })}
         />
         <Flex>
           <MaxWidth45>
@@ -88,7 +90,9 @@ const AddCard = ({ handleCardAdded }) => {
             <Input
               type="number"
               placeholder="Validity"
-              onChange={(e) => setCard({ ...card, valid: e.target.value })}
+              onChange={(e) =>
+                dispatch({ type: "valid", payload: e.target.value })
+              }
             />
           </MaxWidth45>{" "}
           <MaxWidth45>
@@ -96,11 +100,17 @@ const AddCard = ({ handleCardAdded }) => {
             <Input
               type="number"
               placeholder="CvC number"
-              onChange={(e) => setCard({ ...card, cvc: e.target.value })}
+              onChange={(e) =>
+                dispatch({ type: "cvc", payload: e.target.value })
+              }
             />
           </MaxWidth45>
         </Flex>
-        <Select onChange={(e) => setCard({ ...card, vendor: e.target.value })}>
+        <Select
+          onChange={(e) =>
+            dispatch({ type: "vendor", payload: e.target.value })
+          }
+        >
           <option value="Nordea">Nordea</option>
           <option value="default">Choose Vendor</option>
           <option value="Swedbank">Swedbank</option>
