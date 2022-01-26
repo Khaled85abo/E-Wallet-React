@@ -1,6 +1,7 @@
+import { FlexCol } from "../globalStyles";
 const WifiChip = ({ color }) => {
   return (
-    <div>
+    <FlexCol>
       <svg
         width="44"
         height="44"
@@ -38,7 +39,7 @@ const WifiChip = ({ color }) => {
         <line x1="32" y1="26.5" x2="50" y2="26.5" stroke="#000000" />
         <line x1="18.5" y1="5.46392e-08" x2="18.5" y2="40" stroke="#000000" />
       </svg>
-    </div>
+    </FlexCol>
   );
 };
 

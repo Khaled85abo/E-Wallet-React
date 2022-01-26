@@ -3,6 +3,7 @@ import { Flex, FlexCol } from "../globalStyles";
 import { StyledCard, Span, ChipLogo } from "./Card.elements";
 import { Chip, Wifi, Bitcoin, BlockChain, Ninja, Evil } from "../assets";
 import Loogo from "../assets/Logo";
+import WifiChip from "../assets/WifiChip";
 
 const Card = (props) => {
   const { owner, number, valid, vendor } = props.card;
@@ -100,10 +101,7 @@ const Card = (props) => {
   return (
     <StyledCard $vendor={vendor}>
       <ChipLogo>
-        <FlexCol>
-          <Wifi color={chipColor} />
-          <Chip color={chipColor} />
-        </FlexCol>
+        <WifiChip color={chipColor} />
         <Loogo vendor={vendor} />
       </ChipLogo>
       <Flex>
