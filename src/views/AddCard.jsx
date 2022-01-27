@@ -14,27 +14,22 @@ const cardReducer = (state, action) => {
   switch (action.type) {
     case "number":
       return {
-        ...state,
         number: action.payload,
       };
     case "owner":
       return {
-        ...state,
         owner: action.payload,
       };
     case "vendor":
       return {
-        ...state,
         vendor: action.payload,
       };
     case "cvc":
       return {
-        ...state,
         cvc: action.payload,
       };
     case "valid":
       return {
-        ...state,
         valid: action.payload,
       };
   }

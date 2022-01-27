@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import Card from "../components/Card";
+import { HomeWrapper, Cards, AddCardBtn } from "./Home.elements";
 let count = 0;
 const Home = ({ cards }) => {
   count++;
@@ -19,7 +20,7 @@ const Home = ({ cards }) => {
     );
   }, [cards]);
   return (
-    <div>
+    <HomeWrapper>
       {cards.length > 1 && (
         <>
           <p>ACTIVE CARD</p>
@@ -28,13 +29,15 @@ const Home = ({ cards }) => {
       )}
 
       <p>ALL CARDS</p>
-
-      {cards.map((card, index) => (
-        <div onClick={() => setActiveCardIndex(index)}>
-          <Card key={index} card={card} />
-        </div>
-      ))}
-    </div>
+      <Cards>
+        {cards.map((card, index) => (
+          <div onClick={() => setActiveCardIndex(index)}>
+            <Card key={index} card={card} />
+          </div>
+        ))}
+      </Cards>
+      <AddCardBtn>Add New Card</AddCardBtn>
+    </HomeWrapper>
   );
 };
 
