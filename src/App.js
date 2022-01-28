@@ -8,13 +8,16 @@ function App() {
 
   const handleCardAdded = (card) => {
     console.log("handle add card: ", card);
+    saveToLocalStorage(card);
     setCards((oldArr) => [...oldArr, card]);
-    // saveToLocalStorage();
-    // setRoute("home");
+    setRoute("home");
   };
 
-  const saveToLocalStorage = () => {
-    localStorage.setItem("react-cards", JSON.stringify(cards));
+  const addCard = () => {
+    setRoute("addcard");
+  };
+  const saveToLocalStorage = (card) => {
+    localStorage.setItem("react-cards", JSON.stringify([...cards, card]));
   };
 
   // const persist = useMemo(() => {
@@ -39,7 +42,7 @@ function App() {
       {route === "addcard" ? (
         <AddCard handleCardAdded={handleCardAdded} />
       ) : (
-        <Home cards={cards} />
+        <Home cards={cards} addCard={addCard} />
       )}
     </div>
   );

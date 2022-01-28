@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HomeWrapper = styled.main`
   text-align: center;
@@ -9,7 +9,6 @@ export const HomeWrapper = styled.main`
 export const Cards = styled.section`
   display: grid;
   grid-auto-rows: 4rem;
-  grid-template-columns: 1fr;
 `;
 
 export const AddCardBtn = styled.button`
@@ -21,6 +20,18 @@ export const AddCardBtn = styled.button`
   margin-top: 3rem;
   text-transform: uppercase;
   font-size: 1.3rem;
-  margin-top: 241px;
   margin-bottom: 1rem;
+  /* margin-top: ${(props) => (props.full ? "241px" : "1rem")}; */
+  ${(props) => {
+    switch (props.$state) {
+      case "full":
+        return css`
+          margin-top: 241px;
+        `;
+      default:
+        return css`
+          margin-top: 1rem;
+        `;
+    }
+  }}
 `;

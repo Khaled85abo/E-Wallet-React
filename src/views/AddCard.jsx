@@ -14,22 +14,27 @@ const cardReducer = (state, action) => {
   switch (action.type) {
     case "number":
       return {
+        ...state,
         number: action.payload,
       };
     case "owner":
       return {
+        ...state,
         owner: action.payload,
       };
     case "vendor":
       return {
+        ...state,
         vendor: action.payload,
       };
     case "cvc":
       return {
+        ...state,
         cvc: action.payload,
       };
     case "valid":
       return {
+        ...state,
         valid: action.payload,
       };
   }
@@ -106,8 +111,10 @@ const AddCard = ({ handleCardAdded }) => {
             dispatch({ type: "vendor", payload: e.target.value })
           }
         >
+          <option value="default" disabled hidden selected>
+            Choose Vendor
+          </option>
           <option value="Nordea">Nordea</option>
-          <option value="default">Choose Vendor</option>
           <option value="Swedbank">Swedbank</option>
           <option value="Handelsbanken">Handelsbanken</option>
         </Select>

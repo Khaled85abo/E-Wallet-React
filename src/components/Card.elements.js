@@ -40,8 +40,8 @@ export const StyledCard = styled.article`
 `;
 
 export const ChipLogo = styled(Flex)`
-  align-items: flex-start;
+  align-items: center;
 `;
 export const Span = styled.span`
-  font-size: 1.55rem;
+  font-size: 1.9rem;
 `;
