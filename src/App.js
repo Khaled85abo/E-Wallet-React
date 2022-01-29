@@ -27,9 +27,34 @@ function App() {
   // }, [cards]);
 
   useEffect(() => {
-    const cards = localStorage.getItem("react-cards");
+    let cards = localStorage.getItem("react-cards");
     if (cards) {
       setCards(JSON.parse(cards));
+    } else {
+      cards = cards = [
+        {
+          number: "2131532151321322",
+          owner: "Khaled",
+          cvc: "324",
+          valid: "342",
+          vendor: "Nordea",
+        },
+        {
+          number: "4444444444444444",
+          owner: "Khaled",
+          cvc: "125",
+          valid: "1225",
+          vendor: "Swedbank",
+        },
+        {
+          number: "1325123152152215",
+          owner: "khaled",
+          cvc: "1215",
+          valid: "1223",
+          vendor: "Handelsbanken",
+        },
+      ];
+      setCards(cards);
     }
   }, []);
   return (
@@ -39,10 +64,10 @@ function App() {
         <button onClick={() => setRoute("home")}>Home</button>
         <button onClick={() => setRoute("addcard")}>Add Card</button>
       </div>
-      {route === "addcard" ? (
-        <AddCard handleCardAdded={handleCardAdded} />
-      ) : (
+      {route === "home" ? (
         <Home cards={cards} addCard={addCard} />
+      ) : (
+        <AddCard handleCardAdded={handleCardAdded} />
       )}
     </div>
   );

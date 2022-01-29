@@ -18,19 +18,10 @@ export const Input = styled.input`
   border-radius: 8px;
   height: 56px;
   margin: 0.1rem 0 1rem 0;
+  font-size: 1.1rem;
+  border: 1px black solid;
+`;
 
-  border: 1px black solid;
-`;
-export const Select = styled.select`
-  padding: 1rem;
-  display: block;
-  width: 100%;
-  border-radius: 8px;
-  height: 56px;
-  margin: 0.1rem 0 1rem 0;
-  font-size: 1.3rem;
-  border: 1px black solid;
-`;
 export const Submit = styled(Input)`
   background: black;
   height: 72px;

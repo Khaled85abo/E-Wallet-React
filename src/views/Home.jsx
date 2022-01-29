@@ -14,6 +14,10 @@ const Home = ({ cards, addCard }) => {
     setShow(!show);
   };
 
+  const handleCardClicked = (e, index) => {
+    e.stopPropagation();
+    setActiveCardIndex(index);
+  };
   const deleteCard = () => {
     console.log(activeCardIndex);
   };
@@ -54,8 +58,18 @@ const Home = ({ cards, addCard }) => {
           <p>ALL CARDS</p>
           <Cards>
             {cards.map((card, index) => (
-              <div onClick={() => setActiveCardIndex(index)}>
-                <Card key={index} card={card} />
+              <div style={{ border: "solid 2px yellow" }}>
+                <div
+                  key={index}
+                  onClick={(e) => handleCardClicked(e, index)}
+                  style={{ border: "solid 2px black" }}
+                >
+                  <Card
+                    index={index}
+                    card={card}
+                    // handleCardClicked={handleCardClicked}
+                  />
+                </div>
               </div>
             ))}
           </Cards>

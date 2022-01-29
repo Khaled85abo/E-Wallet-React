@@ -1,12 +1,5 @@
 import { useState, useReducer } from "react";
-import {
-  Form,
-  Input,
-  Submit,
-  Label,
-  Select,
-  MaxWidth45,
-} from "./AddCard.elements";
+import { Form, Input, Submit, Label, MaxWidth45 } from "./AddCard.elements";
 import { Flex } from "../globalStyles";
 import Card from "../components/Card";
 
@@ -106,7 +99,8 @@ const AddCard = ({ handleCardAdded }) => {
             />
           </MaxWidth45>
         </Flex>
-        <Select
+        <Input
+          as="select"
           onChange={(e) =>
             dispatch({ type: "vendor", payload: e.target.value })
           }
@@ -117,7 +111,7 @@ const AddCard = ({ handleCardAdded }) => {
           <option value="Nordea">Nordea</option>
           <option value="Swedbank">Swedbank</option>
           <option value="Handelsbanken">Handelsbanken</option>
-        </Select>
+        </Input>
 
         <Submit type="submit" />
       </Form>

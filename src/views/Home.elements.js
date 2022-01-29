@@ -7,8 +7,12 @@ export const HomeWrapper = styled.main`
 `;
 
 export const Cards = styled.section`
+  margin-top: 1rem;
   display: grid;
   grid-auto-rows: 4rem;
+  article {
+    margin-top: 0.1rem;
+  }
 `;
 
 export const AddCardBtn = styled.button`

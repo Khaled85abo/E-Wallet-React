@@ -5,8 +5,9 @@ import { Chip, Wifi, Bitcoin, BlockChain, Ninja, Evil } from "../assets";
 import Loogo from "../assets/Logo";
 import WifiChip from "../assets/WifiChip";
 
-const Card = (props) => {
-  const { owner, number, valid, vendor } = props.card;
+const Card = ({ card, index, handleCardClicked }) => {
+  console.log(index);
+  const { owner, number, valid, vendor } = card;
   const span1 = useMemo(() => {
     let span = "";
     for (let i = 0; i < 4; i++) {
@@ -99,7 +100,10 @@ const Card = (props) => {
   const chipColor =
     vendor === "Nordea" || vendor === "Handelsbanken" ? "white" : "black";
   return (
-    <StyledCard $vendor={vendor}>
+    <StyledCard
+      $vendor={vendor}
+      // onClick={(e) => handleCardClicked(e, index)}
+    >
       <ChipLogo>
         <WifiChip color={chipColor} />
         <Loogo vendor={vendor} />
