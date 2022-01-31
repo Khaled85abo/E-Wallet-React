@@ -16,6 +16,6 @@ export const Flex = styled.div`
 export const FlexCol = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: ${(props) => (props.right ? "right" : "left")};
+  text-align: ${(props) => (props.left ? "left" : "center")};
 `;
 export default GlobalStyles;

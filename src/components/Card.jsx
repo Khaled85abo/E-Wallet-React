@@ -79,11 +79,11 @@ const Card = ({ card, index, handleCardClicked }) => {
         <Span>{SpacedCardNumber}</Span>
       </JustifyCenter>
       <Flex>
-        <FlexCol>
+        <FlexCol left>
           <p>Card Holder</p>
           <h4>{owner ? owner : "Card Holder"}</h4>
         </FlexCol>
-        <FlexCol right>
+        <FlexCol>
           <p>ValidThru</p>
           <h4>
             {month}/{year}

@@ -48,5 +48,6 @@ export const ChipLogo = styled(Flex)`
   align-items: center;
 `;
 export const Span = styled.span`
-  font-size: 2.1rem;
+  text-transform: initial;
+  font-size: 2.25rem;
 `;
