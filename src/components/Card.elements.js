@@ -39,9 +39,14 @@ export const StyledCard = styled.article`
   }}
 `;
 
+export const JustifyCenter = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const ChipLogo = styled(Flex)`
   align-items: center;
 `;
 export const Span = styled.span`
-  font-size: 1.9rem;
+  font-size: 2.1rem;
 `;

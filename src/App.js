@@ -1,6 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
+/* eslint-disable import/first */
+import React, { useState, useEffect, Suspense } from "react";
 import GlobalStyle from "./globalStyles";
-import AddCard from "./views/AddCard";
+// import AddCard from "./views/AddCard";
+const AddCard = React.lazy(() => import("./views/AddCard"));
 import Home from "./views/Home";
 function App() {
   const [cards, setCards] = useState([]);
@@ -64,11 +66,13 @@ function App() {
         <button onClick={() => setRoute("home")}>Home</button>
         <button onClick={() => setRoute("addcard")}>Add Card</button>
       </div>
-      {route === "home" ? (
-        <Home cards={cards} addCard={addCard} />
-      ) : (
-        <AddCard handleCardAdded={handleCardAdded} />
-      )}
+      <Suspense fallback={<div>Loading...</div>}>
+        {route === "home" ? (
+          <Home cards={cards} addCard={addCard} />
+        ) : (
+          <AddCard handleCardAdded={handleCardAdded} />
+        )}
+      </Suspense>
     </div>
   );
 }

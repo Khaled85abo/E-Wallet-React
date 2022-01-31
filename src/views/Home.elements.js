@@ -7,11 +7,16 @@ export const HomeWrapper = styled.main`
 `;
 
 export const Cards = styled.section`
+  border: 5px solid red;
   margin-top: 1rem;
   display: grid;
   grid-auto-rows: 4rem;
   article {
     margin-top: 0.1rem;
+    /* margin-top: 1rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); */
   }
 `;
 
@@ -30,7 +35,7 @@ export const AddCardBtn = styled.button`
     switch (props.$state) {
       case "full":
         return css`
-          margin-top: 241px;
+          margin-top: 250px;
         `;
       default:
         return css`

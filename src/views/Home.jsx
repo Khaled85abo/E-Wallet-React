@@ -58,7 +58,10 @@ const Home = ({ cards, addCard }) => {
           <p>ALL CARDS</p>
           <Cards>
             {cards.map((card, index) => (
-              <div style={{ border: "solid 2px yellow" }}>
+              <div
+                // style={{ paddingTop: "3rem" }}
+                style={{ border: "2px solid yellow" }}
+              >
                 <div
                   key={index}
                   onClick={(e) => handleCardClicked(e, index)}
