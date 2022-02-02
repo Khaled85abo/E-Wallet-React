@@ -56,7 +56,7 @@ const Home = ({ cards, addCard }) => {
       {cards.length > 1 && (
         <>
           <p>ALL CARDS</p>
-          <Cards>
+          <Cards $state={isEmpty}>
             {cards.map((card, index) => (
               <div
                 // style={{ paddingTop: "3rem" }}
@@ -79,9 +79,7 @@ const Home = ({ cards, addCard }) => {
         </>
       )}
 
-      <AddCardBtn onClick={addCard} $state={isEmpty}>
-        Add New Card
-      </AddCardBtn>
+      <AddCardBtn onClick={addCard}>Add New Card</AddCardBtn>
     </HomeWrapper>
   );
 };

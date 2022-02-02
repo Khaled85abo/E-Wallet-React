@@ -11,6 +11,18 @@ export const Cards = styled.section`
   margin-top: 1rem;
   display: grid;
   grid-auto-rows: 4rem;
+  ${(props) => {
+    switch (props.$state) {
+      case "full":
+        return css`
+          margin-bottom: 250px;
+        `;
+      default:
+        return css`
+          margin-bottom: 1rem;
+        `;
+    }
+  }}
   article {
     margin-top: 0.1rem;
     /* margin-top: 1rem;
@@ -29,18 +41,19 @@ export const AddCardBtn = styled.button`
   margin-top: 3rem;
   text-transform: uppercase;
   font-size: 1.3rem;
+  z-index: -1;
   margin-bottom: 1rem;
-  /* margin-top: ${(props) => (props.full ? "241px" : "1rem")}; */
-  ${(props) => {
-    switch (props.$state) {
-      case "full":
-        return css`
-          margin-top: 250px;
-        `;
-      default:
-        return css`
-          margin-top: 1rem;
-        `;
-    }
-  }}
 `;
+/* margin-top: ${(props) => (props.full ? "241px" : "1rem")}; */
+// ${(props) => {
+//   switch (props.$state) {
+//     case "full":
+//       return css`
+//         margin-top: 250px;
+//       `;
+//     default:
+//       return css`
+//         margin-top: 1rem;
+//       `;
+//   }
+// }}
